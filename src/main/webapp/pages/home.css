@@ -1,0 +1,449 @@
+@charset "UTF-8";
+
+    :root {
+      --gold: #FFD700;
+      --black: #000;
+    }
+
+    html {
+      font-size: 16px;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #fff;
+    }
+
+    .navbar-custom {
+      background-color: rgb(18, 17, 17);
+      background-image: url('../images/nav.jpg');
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center;
+      background-color: rgba(0, 0, 0, 0.5); 
+      background-blend-mode: overlay;
+      padding: 0.5rem 1rem;
+      position: sticky;
+      top: 0;
+      z-index: 1050;
+    }
+    .navbar-custom .container-fluid {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .navbar-custom .navbar-brand,
+    .navbar-custom .form-control,
+    .navbar-custom .form-select,
+    .navbar-custom .btn {
+      color: var(--gold) !important;
+      border-color: var(--gold) !important;
+    }
+
+    .btn-outline-gold {
+      color: var(--gold);
+      border: 0.1rem solid var(--gold);
+    }
+
+    .btn-outline-gold:hover {
+      background-color: var(--gold);
+      color: var(--black);
+    }
+
+    .logo-img {
+      height: 3rem;
+      width: auto;
+      max-width: 10rem;
+    }
+
+    .search-input {
+      width: 100%; /* Make the search bar take full width on small screens */
+      max-width: 15rem; /* Set a max width for larger screens */
+    }
+
+    /* Responsiveness for mobile screens */
+    @media (max-width: 768px) {
+      .navbar-custom {
+        padding: 0.5rem 1rem;
+      }
+
+      .navbar-brand {
+        flex: 1; /* Allow the logo to take available space */
+        display: flex;
+        justify-content: center;
+      }
+
+      .search-input {
+        max-width: 12rem;
+      }
+
+      .ac select {
+        width: 100%; /* Make the category selector take full width */
+        margin-top: 0.5rem;
+      }
+
+      .navbar-custom .d-flex {
+        width: 100%;
+        justify-content: space-between;
+      }
+
+      .navbar-custom .d-flex a {
+        margin-left: 0.5rem;
+      }
+    }
+
+
+    .navbar-brand span {
+      font-family: 'Lato', sans-serif;
+    }
+
+    .form-select {
+      min-width: 8rem;
+    }
+
+    .carousel-item img {
+      width: 100%;
+      height: auto;
+      object-fit: cover;
+      max-height: 40rem;
+    }
+
+    .nav-section {
+      position: absolute;
+      top: 4.2rem;
+      width: 100%;
+      z-index: 1040;
+      transition: all 0.4s ease;
+    }
+
+    .nav-section .nav-link {
+      color: white !important;
+      font-weight: 500;
+      font-size: 1rem;
+      transition: all 0.3s ease;
+      padding: 0.5rem 1rem;
+      border-radius: 0.5rem;
+    }
+
+    .nav-section .nav-link:hover {
+      background-color: var(--gold);
+      color: var(--black) !important;
+    }
+
+    .nav-section.scrolled {
+      position: sticky;
+      top: 4.2rem;
+      background-color: var(--gold) !important;
+      opacity: 1;
+      height: 3rem;
+    }
+
+    .nav-section.scrolled .nav-link {
+      color: var(--black) !important;
+    }
+
+    .nav-section.scrolled .nav-link:hover {
+      background-color: rgb(9, 9, 9);
+      color: var(--gold) !important;
+    }
+
+    .carousel-caption-button {
+      position: absolute;
+      bottom: 3rem;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      z-index: 10;
+    }
+
+    .carousel-caption-button a.btn {
+      background-color: var(--gold);
+      color: var(--black);
+      border: none;
+      padding: 0.5rem 1.5rem;
+      font-weight: 600;
+      border-radius: 0.5rem;
+    }
+    .carousel-caption-button a.btn:hover {
+      background-color: var(--black);
+      color: var(--gold);
+      border: none;
+      padding: 0.5rem 1.5rem;
+      font-weight: 600;
+      border-radius: 0.5rem;
+    }
+
+    footer {
+      background-color: var(--black);
+      color: var(--gold);
+      padding: 5rem 0;
+    }
+
+    #navLinks {
+      margin-top: -4rem;
+    }
+
+    #search {
+      background-color: black;
+      border-color: #FFD700;
+    }
+
+    #search::placeholder {
+      color: #FFD700;
+    }
+
+    #ac {
+      color: white;
+      background-color: black;
+      border: 1px solid var(--gold);
+    }
+    body {
+      font-family: 'Lato', sans-serif;
+    }
+  
+    .card {
+      transition: transform 0.6s ease, box-shadow 0.6s ease;
+      height: auto;
+    }
+    .custom-card {
+    flex: 1 1 calc(19% - 20px); /* Slightly wider than 20% */
+    max-width: calc(19% - 20px);
+    min-width: 220px; /* optional: to ensure button fits nicely */
+  }
+        
+    .card-body {
+      padding: 0.5rem !important;
+    }
+      
+    .card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    }
+  
+    .card-img-top {
+      height: 200px;
+      object-fit: cover;
+    }
+  
+    .btn-yellow {
+      background-color: #FFD700;
+      color: black;
+      border: none;
+      transition: 0.3s ease;
+    }
+  
+    .btn-yellow:hover {
+      background-color: black;
+      color: #FFD700;
+    }
+  
+    .qty-btn {
+      width: 28px;
+      height: 20px;
+      font-size: 0.75rem;
+      padding: 0;
+      line-height: 1;
+      background-color: #f0f0f0;
+      border: none;
+      font-weight: bold;
+      border-radius: 4px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  
+    .qty-display {
+      font-size: 0.8rem;
+      width: 20px;
+      text-align: center;
+      font-weight: 600;
+      line-height: 1;
+    }
+  
+    .btn-cart-small {
+      height: 28px;   
+      font-size: 0.75rem;
+      padding: 6px 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      white-space: nowrap;
+      margin-left: auto; 
+    }
+  
+    .add-cart-row {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 2px;
+    }
+    .atc{
+      margin-bottom: 0.2rem;
+    }
+
+    .qty-wrap {
+      display: flex;
+      align-items: center;
+    }
+    
+    .qty-btn {
+      background-color: #f0f0f0;
+      border: 1px solid #ccc;
+      padding: 2px 6px;
+      cursor: pointer;
+      font-size: 12px; 
+      cursor: pointer;
+    }
+
+    .qty-display {
+      font-size: 16px;
+      font-weight: bold;
+    }
+
+
+
+    .qty-controls {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+  
+  
+    .card-title {
+      font-size: 0.85rem;
+      margin-bottom: 2px; 
+    }
+  
+    .card-price {
+      font-size: 0.8rem;
+      color: #444;
+      margin-bottom: 1px; 
+    }
+  
+    @media (max-width: 991px) {
+      .row-cols-lg-5 > * {
+        flex: 0 0 auto;
+        width: 50%;
+      }
+    }
+  
+    @media (max-width: 576px) {
+      .row-cols-lg-5 > * {
+        width: 100%;
+      }
+    }
+  
+    /* ✅ Popup Style */
+    .popup-message {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: #222;
+      color: #fff;
+      padding: 10px 16px;
+      border-radius: 8px;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: all 0.4s ease;
+      z-index: 1000;
+      pointer-events: none;
+      font-size: 0.85rem;
+    }
+  
+    .popup-message.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  
+    /* ✅ Background image for featured section */
+    .featured-bg {
+      position: relative;
+      background-image: url('../images/brickwall.png'); 
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      color: white;
+      padding-top: 100px; /* Adds space at the top of the section */
+      padding-bottom: 60px; /* Adjusts bottom padding */
+      height: 100vh; /* Full viewport height */
+      margin-top: 0; /* Remove top margin */
+      margin-bottom: 0; /* Remove bottom margin */
+      overflow: hidden; /* Prevent content overflow */
+    }
+  
+    .featured-bg::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.4); /* overlay */
+      z-index: 1;
+    }
+    body {
+      margin: 0; /* Remove default body margin */
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+    }
+
+    main {
+      flex: 1; /* Allow the content to grow and push the footer down */
+    }
+    .featured-bg h3 {
+      margin-bottom:30px; /* Adds space below the title */
+    }
+
+    .featured-bg .btn-yellow {
+      margin-top: 16px; /* Adds space above the button */
+    }
+
+    /* Ensure responsiveness */
+    @media (max-width: 991px) {
+      .row-cols-lg-5 > * {
+        flex: 0 0 auto;
+        width: 50%;
+      }
+    }
+
+    @media (max-width: 576px) {
+      .row-cols-lg-5 > * {
+        width: 100%;
+      }
+    }
+      
+    .featured-bg > .container {
+      position: relative;
+      z-index: 2;
+    }
+  
+    .btn-yellow {
+      padding: 0.4rem 1.5rem;
+    }
+   .add-cart-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 0.25rem;
+      margin-top: 10px;
+      flex-wrap: nowrap;
+      
+    }
+
+
+#featureddrinksheader {
+  text-align: center;
+  margin: 0;
+  padding-top: 1rem;
+}
+
+.featured-drinks-container {
+  padding-bottom: 1rem; /* spacing below the header */
+}
+.container{
+  padding-bottom: 0.9rem;
+}
+
