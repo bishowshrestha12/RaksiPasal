@@ -37,43 +37,48 @@ public class UsersDAO {
 	}
 
 	
-	public ArrayList<User> getUserDetails() {
-		ArrayList<User> userList = new ArrayList<>();
-		String query = "SELECT email, password FROM users";
+	public User getUserDetails(String userEmail) {
+        User user = null;
+        String query = "SELECT email, firstname, lastname, dob, password FROM users WHERE email = ?";
 
-		if (conn != null) {
-			try {
-				PreparedStatement ps = conn.prepareStatement(query);
-				ResultSet rs = ps.executeQuery();
+        if (conn != null) {
+            try {
+                PreparedStatement ps = conn.prepareStatement(query);
+                ps.setString(1, userEmail);  // Set the email to filter results
+                ResultSet rs = ps.executeQuery();
 
-				while (rs.next()) {
-					String email = rs.getString("email");
-					String password = rs.getString("password");
+                if (rs.next()) {
+                    // ✅ Retrieve data from result set
+                    String email = rs.getString("email");
+                    String firstname = rs.getString("firstname");
+                    String lastname = rs.getString("lastname");
+                    String dob = rs.getString("dob");
+                    String password = rs.getString("password");
 
-					User user = new User(email, password);
-					userList.add(user);
-				}
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
-		}
-		return userList;
-	}
+                    // ✅ Create user object with retrieved data
+                    user = new User(email, firstname, lastname, dob, password);
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+        return user;  // Return single user object
+    }
 	
-	public boolean updateUser(User user) throws SQLException {
-		String query = "UPDATE users SET firstname = ?, lastname = ?, password = ?, Date_of_birth = ?WHERE email = ?";
-		if (conn != null) {
-			PreparedStatement ps = conn.prepareStatement(query);
-			ps.setString(1, user.getFirstname());
-			ps.setString(2, user.getLastname());
-			ps.setString(3, user.getPassword());
-			ps.setString(4, user.getDob());
-			ps.setString(5, user.getEmail());
+	public boolean updateUserProfile(String email, String firstName, String lastName, String dob) {
+	    String query = "UPDATE users SET firstname = ?, lastname = ?, dob = ? WHERE email = ?";
+	    
+	    try (PreparedStatement ps = conn.prepareStatement(query)) {
+	        ps.setString(1, firstName);
+	        ps.setString(2, lastName);
+	        ps.setString(3, dob);
+	        ps.setString(4, email);
 
-			int rowsUpdated = ps.executeUpdate();
-			return rowsUpdated > 0;
-		}
-		return false;
+	        int rowsAffected = ps.executeUpdate();
+	        return rowsAffected > 0; // Return true if the update was successful
+	    } catch (SQLException e) {
+	        e.printStackTrace();
+	        return false; // Return false if there was an error
+	    }
 	}
-
 }

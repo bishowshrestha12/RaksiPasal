@@ -9,67 +9,80 @@ import javax.servlet.http.*;
 
 import com.RaksiPasal.dao.UsersDAO;
 import com.RaksiPasal.model.User;
-import com.RaksiPasal.utility.EncryptDecrypt;
 
 @WebServlet("/Profile")
 public class ProfileController extends HttpServlet {
-	private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 1L;
 
-	public ProfileController() {
-		super();
-	}
+    public ProfileController() {
+        super();
+    }
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		// ✅ Get the email from session
-		HttpSession session = request.getSession(false);
-		if (session == null || session.getAttribute("userEmail") == null) {
-			response.sendRedirect("login.jsp?error=session_expired");
-			return;
-		}
-		String email = (String) session.getAttribute("userEmail");
+    // GET: Fetch and show user data on profile.jsp
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
 
-		// ✅ Get updated fields from the form
-		String takePassword = request.getParameter("password");
-		String fname = request.getParameter("fname");
-		String lname = request.getParameter("lname");
-		String dob = request.getParameter("dob");
+        // Check if session exists and get the user's email
+        HttpSession session = request.getSession(false);
+        if (session == null || session.getAttribute("userEmail") == null) {
+            response.sendRedirect("login.jsp?error=session_expired");
+            return;
+        }
 
-		// ✅ Encrypt password
-		String password = EncryptDecrypt.encrypt(takePassword);
+        String email = (String) session.getAttribute("userEmail");
 
-		// ✅ Validate fields
-		if (fname == null || !fname.matches("^[a-zA-Z]+$")) {
-			response.sendRedirect("profile.jsp?error=fname");
-			return;
-		}
+        try {
+            UsersDAO dao = new UsersDAO();
+            User user = dao.getUserDetails(email);
 
-		if (lname == null || !lname.matches("^[a-zA-Z]+$")) {
-			response.sendRedirect("profile.jsp?error=lname");
-			return;
-		}
+            if (user != null) {
+                request.setAttribute("user", user);
+                request.getRequestDispatcher("profile.jsp").forward(request, response);
+            } else {
+                response.sendRedirect("login.jsp?error=user_not_found");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            response.sendRedirect("profile.jsp?error=exception");
+        }
+    }
 
-		if (takePassword == null || !takePassword.matches(".*[A-Z].*") || 
-		    !takePassword.matches(".*[0-9].*") || 
-		    !takePassword.matches(".*[^A-Za-z0-9].*") || 
-		    takePassword.length() < 6) {
-			response.sendRedirect("profile.jsp?error=password");
-			return;
-		}
+    // POST: Update user data after editing profile
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
 
+        // Get the updated profile data from the form
+        String firstName = request.getParameter("firstName");
+        String lastName = request.getParameter("lastName");
+        String dob = request.getParameter("dob");
 
-		try {
-			User user = new User(email, fname, lname, dob, password);
-			UsersDAO dao = new UsersDAO();
+        // Get user email from session
+        HttpSession session = request.getSession(false);
+        String email = (String) session.getAttribute("userEmail");
 
-			if (dao.updateUser(user)) {
-				response.sendRedirect("profile.jsp?success=true");
-			} else {
-				response.sendRedirect("profile.jsp?error=db");
-			}
-		} catch (ClassNotFoundException | SQLException e) {
-			e.printStackTrace();
-			response.sendRedirect("profile.jsp?error=exception");
-		}
-	}
+        // Update the user profile in the database
+        UsersDAO dao = null;
+        try {
+            dao = new UsersDAO(); // Initialize UsersDAO
+        } catch (ClassNotFoundException | SQLException e) {
+            // Handle exception properly
+            e.printStackTrace();
+            request.setAttribute("error", "Database connection error.");
+            request.getRequestDispatcher("profile.jsp").forward(request, response);
+            return; // Return early if DAO initialization fails
+        }
+
+        // Update profile data
+        boolean isUpdated = dao.updateUserProfile(email, firstName, lastName, dob);
+
+        if (isUpdated) {
+            // Redirect to the profile page to show the updated data
+            response.sendRedirect("Profile");
+        } else {
+            // Handle error if update fails
+            request.setAttribute("error", "Unable to update profile.");
+            request.getRequestDispatcher("profile.jsp").forward(request, response);
+        }
+    }
+
 }
