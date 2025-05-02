@@ -3,11 +3,11 @@
     body, html {
       height: 100%;
       margin: 0;
-      background: url('../images/register.jpg') no-repeat center center fixed;
+      background: url('./images/ballantines.jpeg') no-repeat center center fixed;
       background-size: cover;
       font-family: 'Segoe UI', sans-serif;
     }
-
+  
     .container-wrapper {
       height: 100%;
       display: flex;
@@ -15,27 +15,27 @@
       align-items: center;
       padding: 1rem;
     }
-
-    .register-section {
+  
+    .login-section {
       background-color: rgba(0, 0, 0, 0.85);
       padding: 2rem;
       border-radius: 2rem;
       width: 100%;
-      max-width: 500px;
+      max-width: 400px;
       box-shadow: 0 0 40px rgba(255, 215, 0, 0.5);
       color: #ffcc00;
       text-align: center;
     }
-
+  
     .brand-logo {
       margin-bottom: 1.5rem;
     }
-
+  
     .brand-logo img {
-      max-width: 150px;
+      max-width: 200px;
       height: auto;
     }
-
+  
     .form-control {
       background-color: #222;
       border: 1px solid #ffcc00;
@@ -45,37 +45,37 @@
       box-shadow: none;
       transition: 0.3s ease;
     }
-
+  
     .form-control::placeholder {
       color: rgba(230, 230, 230, 0.5);
     }
-
+  
     .form-control:focus {
       border-color: #e6b800;
       box-shadow: 0 0 10px rgba(255, 204, 0, 0.4);
       background-color: #1a1a1a;
       color: #ffcc00;
     }
-
+  
     .btn-gold {
       background-color: #ffcc00;
       color: #000;
       border: none;
       border-radius: 0.9rem;
       font-weight: 600;
-      padding: 0.6rem 2rem;
+      padding: 0.3rem 4rem;
     }
-
+  
     .btn-gold:hover {
-      background-color: #e6b800;
+      background-color: #161615;
     }
-
+  
     .form-group {
       margin-bottom: 1.1rem;
       text-align: left;
       position: relative;
     }
-
+  
     .toggle-password {
       position: absolute;
       top: 50%;
@@ -86,17 +86,19 @@
       user-select: none;
       font-size: 1.2rem;
     }
-
-    .already-account {
+  
+    .create-account {
       margin-top: 1rem;
       font-size: 0.85rem;
     }
-
-    .already-account a {
+  
+    .create-account a {
       color: #ffcc00;
       text-decoration: none;
     }
-
-    .already-account a:hover {
+  
+    .create-account a:hover {
       text-decoration: underline;
     }
+
+  

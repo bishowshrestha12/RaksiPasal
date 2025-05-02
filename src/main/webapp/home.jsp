@@ -14,7 +14,7 @@
   <nav class="navbar navbar-expand-lg navbar-custom">
     <div class="container-fluid d-flex justify-content-between align-items-center flex-wrap">
       <a class="navbar-brand d-flex align-items-center" href="#">
-        <img src="../images/logo.png" alt="Logo" class="logo-img">
+        <img src="./images/logo.png" alt="Logo" class="logo-img">
       </a>
       <div class="d-flex align-items-center flex-grow-1 justify-content-center">
         <input class="form-control me-2 search-input" type="search" placeholder="Search..." id="search" aria-label="Search">
@@ -51,19 +51,19 @@
     <div id="heroCarousel" class="carousel slide" data-bs-ride="carousel">
       <div class="carousel-inner">
         <div class="carousel-item active">
-          <img src="../images/home_first_image.jpg" class="d-block w-100 img-fluid" alt="Slide 1">
+          <img src="./images/home_first_image.jpg" class="d-block w-100 img-fluid" alt="Slide 1">
         </div>
         <div class="carousel-item">
-          <img src="../images/the_finest.jpg" class="d-block w-100 img-fluid" alt="Slide 2">
+          <img src="./images/the_finest.jpg" class="d-block w-100 img-fluid" alt="Slide 2">
         </div>
         <div class="carousel-item">
-          <img src="../images/olddurbar.jpg" class="d-block w-100 img-fluid" alt="Slide 3">
+          <img src="./images/olddurbar.jpg" class="d-block w-100 img-fluid" alt="Slide 3">
         </div>
         <div class="carousel-item">
-          <img src="../images/G&G.jpg" class="d-block w-100 img-fluid" alt="Slide 4">
+          <img src="./images/G&G.jpg" class="d-block w-100 img-fluid" alt="Slide 4">
         </div>
         <div class="carousel-item">
-          <img src="../images/kala_patthar.jpg" class="d-block w-100 img-fluid" alt="Slide 5">
+          <img src="./images/kala_patthar.jpg" class="d-block w-100 img-fluid" alt="Slide 5">
         </div>
         <div class="carousel-item">
           <img src="../images/bundles.jpg" class="d-block w-100 img-fluid" alt="Slide 6">

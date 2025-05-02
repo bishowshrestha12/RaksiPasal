@@ -16,12 +16,30 @@
       <div class="brand-logo">
         <img src="../images/logo.png" alt="Raksi Pasal Logo">
       </div>
-      <form>
+      <form action="${pageContext.request.contextPath}/LoginController" method="post">
+        <%
+  String error = request.getParameter("error");
+  if (error != null) {
+%>
+  <div class="alert alert-danger text-center mt-2">
+    <%
+      if ("Password".equals(error)) {
+        out.print("Password must be at least 6 characters and contain an uppercase letter, a number, and a special character.");
+      } else if ("InvalidCredentials".equals(error)) {
+        out.print("Invalid email or password.");
+      } else if ("ServerError".equals(error)) {
+        out.print("An internal error occurred. Please try again later.");
+      }
+    %>
+  </div>
+<%
+  }
+%> 
         <div class="form-group">
-          <input type="email" class="form-control" id="email" placeholder="Email">
+          <input type="email" class="form-control" id="email" name ="email" placeholder="Email">
         </div>
         <div class="form-group">
-          <input type="password" class="form-control" id="password" placeholder="Password">
+          <input type="password" class="form-control" id="password" name="password" placeholder="Password">
           <span class="toggle-password" id="toggleIcon" onclick="togglePassword()">🙈</span>
         </div>
         <button type="submit" class="btn btn-gold mt-3">Login</button>

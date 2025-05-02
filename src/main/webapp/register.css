@@ -1,13 +1,7 @@
 @charset "UTF-8";
 
-    body, html {
-      height: 100%;
-      margin: 0;
-      background: url('../images/ballantines.jpeg') no-repeat center center fixed;
-      background-size: cover;
-      font-family: 'Segoe UI', sans-serif;
-    }
-  
+    
+
     .container-wrapper {
       height: 100%;
       display: flex;
@@ -15,27 +9,27 @@
       align-items: center;
       padding: 1rem;
     }
-  
-    .login-section {
+
+    .register-section {
       background-color: rgba(0, 0, 0, 0.85);
       padding: 2rem;
       border-radius: 2rem;
       width: 100%;
-      max-width: 400px;
+      max-width: 500px;
       box-shadow: 0 0 40px rgba(255, 215, 0, 0.5);
       color: #ffcc00;
       text-align: center;
     }
-  
+
     .brand-logo {
       margin-bottom: 1.5rem;
     }
-  
+
     .brand-logo img {
-      max-width: 200px;
+      max-width: 150px;
       height: auto;
     }
-  
+
     .form-control {
       background-color: #222;
       border: 1px solid #ffcc00;
@@ -45,37 +39,37 @@
       box-shadow: none;
       transition: 0.3s ease;
     }
-  
+
     .form-control::placeholder {
       color: rgba(230, 230, 230, 0.5);
     }
-  
+
     .form-control:focus {
       border-color: #e6b800;
       box-shadow: 0 0 10px rgba(255, 204, 0, 0.4);
       background-color: #1a1a1a;
       color: #ffcc00;
     }
-  
+
     .btn-gold {
       background-color: #ffcc00;
       color: #000;
       border: none;
       border-radius: 0.9rem;
       font-weight: 600;
-      padding: 0.3rem 4rem;
+      padding: 0.6rem 2rem;
     }
-  
+
     .btn-gold:hover {
-      background-color: #161615;
+      background-color: #e6b800;
     }
-  
+
     .form-group {
       margin-bottom: 1.1rem;
       text-align: left;
       position: relative;
     }
-  
+
     .toggle-password {
       position: absolute;
       top: 50%;
@@ -86,19 +80,17 @@
       user-select: none;
       font-size: 1.2rem;
     }
-  
-    .create-account {
+
+    .already-account {
       margin-top: 1rem;
       font-size: 0.85rem;
     }
-  
-    .create-account a {
+
+    .already-account a {
       color: #ffcc00;
       text-decoration: none;
     }
-  
-    .create-account a:hover {
+
+    .already-account a:hover {
       text-decoration: underline;
     }
-
-  
